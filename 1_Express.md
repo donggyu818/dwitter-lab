@@ -83,11 +83,11 @@ app.delete('/delete', function(req, res, next) {
 //서버 실행
 app.listen(8080)
 ````
-(4) Express 미들웨어(Middleware)
-1) 미들웨어 체인 흐름
+#### (4) Express 미들웨어(Middleware)
+##### 1) 미들웨어 체인 흐름
 ![alt text](image-1.png)
 
-2) 핵심 개념
+##### 2) 핵심 개념
 ````
 🎯 미들웨어는 요청(Request)과 응답(Response) 사이에서 실행되는 함수입니다.
 
