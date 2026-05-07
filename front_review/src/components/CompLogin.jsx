@@ -24,8 +24,8 @@ export default function CompLogin() {
                 passwordRef.current.focus();
             } else {
                 console.log('서버전송 --->', form);
-                const jsonData = await postFetchData('/api/post', form);
-                jsonData.result? alert("로그인 성공!!") : alert('로그인 실패!!');
+                const jsonData = await postFetchData('/users/login', form);
+                jsonData.result ? alert("로그인 성공!!") : alert('아이디 혹은 비밀번호가 다릅니다');
             }
         }
 
