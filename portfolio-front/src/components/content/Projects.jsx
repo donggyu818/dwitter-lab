@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { getFetchData } from '../../util/fetch.js';
 import AvatarImage from '../commons/AvatarImage.jsx';
 import Modal from './Modal.jsx';
 
@@ -7,6 +8,10 @@ export default function Projects({ projects }) {
     const handleClose = () => {
         setSelectedProject(null);
     }
+    const handleProjectDetail = async(pid) => { // about.jsx 등에서 사용한 fetchdata 역할을 얘가 함.
+        const jsonData = await getFetchData(`/content/work/project/${pid}`);
+        setSelectedProject(jsonData.result);
+    }
 
     return (
         <>
@@ -14,7 +19,7 @@ export default function Projects({ projects }) {
                 {projects?.map((project, idx) => 
                     <li className="project" 
                         key={idx}
-                        onClick={()=> setSelectedProject(project)}>
+                        onClick={()=> handleProjectDetail(project.pid)}>
                         <AvatarImage    img={project.img}
                                         alt={project.alt}
                                         style="project-img" />
