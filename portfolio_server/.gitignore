@@ -1,0 +1,3 @@
+# node_modules
+# .gitignore 파일을 윈도우에서 직접 만들면 txt 파일로 잘못 만들어질 때가 있음. 여기서 아이콘 모양 달라진 거 확인하기.
+node_modules
