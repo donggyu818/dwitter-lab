@@ -12,9 +12,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 // app 라우팅 추가
-app.get('/header', headerRouter);
-app.get('/content', contentRouter);
-app.get('/footer', footerRouter);
+app.use('/header', headerRouter);
+app.use('/content', contentRouter);
+app.use('/footer', footerRouter);
 
 app.listen(PORT, () => {
     console.log(`Server Start ====> ${PORT}`);
