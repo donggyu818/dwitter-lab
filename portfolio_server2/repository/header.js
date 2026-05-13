@@ -1,7 +1,7 @@
-import db from '../db/connection.js';
+import pool from '../db.js';
 
 export const getHeader = async() => {
     const sql = `select header from portfolio;`;
-    const [results, fields] = await db.execute(sql, []);
+    const [results] = await pool.execute(sql, []);
     return await results[0].header;
 }
