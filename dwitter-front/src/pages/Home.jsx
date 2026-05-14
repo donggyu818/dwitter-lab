@@ -10,18 +10,22 @@ export default function Home() {
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isCreated, setIsCreated] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => { // 얘는 값이 변하면 다시 읽음
     tweetAPI
       .getAll()
       .then(setTweets)
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [isCreated]);
 
   const handlePost = async (content) => {
-    const tweet = await tweetAPI.create(content);
-    setTweets((prev) => [tweet, ...prev]);
+    // const tweet = await tweetAPI.create(content);
+    const {result} = await tweetAPI.create(content);
+    if(result) setIsCreated(!isCreated);
+    
+    // setTweets((prev) => [tweet, ...prev]);
   };
 
   const handleDelete = async (id) => {

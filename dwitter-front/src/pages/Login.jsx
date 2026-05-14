@@ -82,8 +82,10 @@ export default function Login() {
     try {
       // ✅ 2단계: 실제 서버 로그인 API 호출
       const data = await authAPI.login(form);
-      login(data.user, data.token);
-      navigate("/");
+      console.log(data.user, data.token);
+
+      login(data.user, data.token);   // localStorage 에 token, user 정보 저장
+      navigate("/");    // 로그인 후 '/' 주소(home) 으로 이동
     } catch (e) {
       // 서버에서 반환한 에러 메시지 표시 (예: "아이디 또는 비밀번호가 틀렸습니다.")
       setServerError(e.message);

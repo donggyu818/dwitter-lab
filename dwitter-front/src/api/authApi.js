@@ -53,7 +53,7 @@ export const tweetAPI = {
   getAll: () =>
     request(`${BASE}/tweets`, { headers: buildHeaders() }),
 
-  getMy: () =>
+  getMy: () =>  // api/tweets/my
     request(`${BASE}/tweets/my`, { headers: buildHeaders(true) }),
 
   create: (content) =>

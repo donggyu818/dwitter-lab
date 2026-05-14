@@ -49,8 +49,46 @@ SELECT count(username) as count FROM users WHERE username = 'user1';
 select count(username) as count, password from users
 	where username = 'user1';
 
+-- 로그인
+-- SELECT * FROM users WHERE username = 'user1';
+select count(username) as count,
+		(select id from users where username='user1') as id, 
+        (select username from users where username='user1') as username, 
+        (select password from users where username='user1') as password, 
+        (select avatar_url from users where username='user1') as avatar_url
+	from users where username='user1';
 
+select * from users;
 
+SELECT
+    t.id,
+    t.content,
+    t.created_at,
+    u.id       AS user_id,
+    u.username,
+    u.avatar_url
+  FROM tweets t
+  inner JOIN users u ON t.user_id = u.id
+  WHERE t.user_id = 2 ORDER BY t.created_at DESC;
+  
+select * from tweets where id = 5;
+select * from tweets;
 
-
-
+-- 
+select * from information_schema.views
+	where table_schema = 'dwitter';
+-- 이렇게 vscode 에서 사용할 백틱으로 묶은 sql 을 아래처럼 나타내고 93번째 줄을 복사하면 간단해짐.
+create view tweets_view
+as
+SELECT
+		t.id,
+		t.content,
+		t.created_at,
+		u.id       AS user_id,
+		u.username,
+		u.avatar_url
+	FROM tweets t
+	inner JOIN users u ON t.user_id = u.id;
+    
+select * from tweets_view
+	order by created_at desc;
