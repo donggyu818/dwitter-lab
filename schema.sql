@@ -92,3 +92,6 @@ SELECT
     
 select * from tweets_view
 	order by created_at desc;
+    
+select * from users;
+desc users;

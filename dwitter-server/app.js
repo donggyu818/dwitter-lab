@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import fs from "fs";
+import fs from "fs";  // 파일 업로드 할 경우 fs, path, fileURLToPath 필요
 import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
